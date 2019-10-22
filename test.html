@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<META charset="utf-8">
+<TITLE>makerhouse견적 페이지</TITLE>
+<link rel="stylesheet" href="css/stl.css">
+</head>
+
+<script>
+	function load_prog(load_status, load_session) {
+		var loaded = 0;
+		var total = 0;
+		//go over all models that are/were loaded
+		Object.keys(load_status).forEach(function (model_id) {
+			if (load_status[model_id].load_session == load_session) //need to make sure we're on the last loading session (not counting previous loaded models)
+			{
+				loaded += load_status[model_id].loaded;
+				total += load_status[model_id].total;
+				//set the relevant model's progress bar
+				document.getElementById("pb" + model_id).value = load_status[model_id].loaded / load_status[model_id].total;
+			}
+		});
+		//set total progress bar
+		document.getElementById("pbtotal").value = loaded / total;
+	}
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+	function ecal()
+	{
+		var umat=document.getElementById("umat").value;
+		var eff=0;
+		if(umat==0)
+		{
+			eff=0.0015;
+		}else{
+			eff=0.0011;
+		}
+		var obj = stl_viewer.get_model_info(1);
+		var pr = obj.volume * eff;
+		if (pr <= 500) {
+			pr *= 500;
+		} else {
+			pr *= 500;
+		}
+		if (pr <= 5000) {
+		pr = 10000;
+		} else {  if (pr <= 20000)  pr=20000;}
+		pr = Math.ceil(pr/1000)*10000;
+		document.getElementById("mprice").value = numberWithCommas(pr.toFixed(0));	
+	}
+
+	function loadComp() {
+		var obj = stl_viewer.get_model_info(1);
+		document.getElementById("mwidth").value = obj.dims.x.toFixed(1);
+		document.getElementById("mheight").value = obj.dims.y.toFixed(1);
+		document.getElementById("mdepth").value = obj.dims.z.toFixed(1);
+		//document.getElementById("mvolume").value = obj.volume.toFixed(2);
+
+		ecal();
+	}
+</script>
+
+<body>
+	<div class="estimate_4 frame">
+		<div class="container" >
+			<div class="content_box">
+				<div id="stl_cont">
+				</div>
+				<div class="tp10">
+					<progress id="pb1" value="0" max="1" style=""></progress>
+				</div>
+
+				<div class="options_box">
+					<div id="options">
+						<div class="tit">
+							<label>뷰어 옵션</label>
+						</div>
+						
+						<div class="txt">
+							<div class="info">
+								<label>렌더링</label>
+								<select name="rshade" onchange="stl_viewer.set_display(1,this.options[this.selectedIndex].value)">
+									<option value="flat">Flat Shading</option>
+									<option value="smooth">Smooth Shading</option>
+									<option value="wireframe">Wireframe</option>
+								</select>
+							</div>
+
+						
+							<div class="info">
+								<label>자동회전</label>
+								<div class="rotate_box">
+									<button class="cbar" id="btnroton" onclick="stl_viewer.set_auto_rotate(true);this.style.backgroundColor='#FF0000';document.getElementById('btnrotoff').style.backgroundColor='#909090';">YES</button>
+									<button class="cbar" id="btnrotoff" onclick="stl_viewer.set_auto_rotate(false);this.style.backgroundColor='#FF0000';document.getElementById('btnroton').style.backgroundColor='#909090';">NO</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+			<div class="nav">
+				<div class="select_box">
+					<div id="mat" class="Sbox_1">
+						<div class="tit">
+							<label>사용재료</label>
+						</div>
+						<select id="umat" name="usedMat" onchange="ecal();">
+							<option value="0">ABS-like white</option>
+
+						</select>
+							<input type="file" onchange='stl_viewer.clean();stl_viewer.add_model({id:1,local_file:this.files[0]});' accept="*.stl" class="infile">
+					</div>
+				</div>
+
+
+
+				<div class="info_box">
+					<div id="model_info">
+						<div class="tit">
+							<label>모델정보</label>
+						</div>
+						<div class="txt">
+							<div class="info">
+								<label>가로(mm)</label>
+								<input class="ibox" id="mwidth" readonly" style="text-align:center" />
+							</div>
+							<div class="info">
+								<label>세로(mm)</label>
+								<input class="ibox" id="mheight" readonly style="text-align:center" />
+							</div>
+							<div class="info">
+								<label>높이(mm)</label>
+								<input class="ibox" id="mdepth" readonly style="text-align:center" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="options_box2">
+					<div id="options">
+						<div class="tit">
+							<label>견적가</label>
+						</div>
+
+						<div class="txt">
+							<input class="ibox" id="mprice" readonly style="text-align:center" />
+							<label>원</label>
+						</div>
+					</div>
+				</div>
+				<div class="options_box3">
+					<div class="txt2">
+					<div class="info_txt">
+						<span class="red">※</span> .STL 파일만 업로드 가능합니다.<br>
+				</div>
+			</div>
+		</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="stl_viewer.min.js"></script>
+	<script>
+		var stl_viewer = new StlViewer
+			(
+			document.getElementById("stl_cont"),
+			{
+				//auto_rotate: true
+				loading_progress_callback: load_prog,
+				all_loaded_callback: loadComp,
+				auto_resize: true
+			}
+			);
+	</script>
+	<script>
+		function setColor(onoff) {
+			if (onoff == 0) {
+				stl_viewer.set_auto_rotate(true);
+				document.getElementById("btnrotoff").style.backgroundColor = '#909090';
+				document.getElementById("btnroton").style.backgroundColor = '#FF0000';
+			} else {
+				stl_viewer.set_auto_rotate(false);
+				document.getElementById("btnrotoff").style.backgroundColor = '#909090';
+				document.getElementById("btnroton").style.backgroundColor = '#FF0000';
+			}
+		}
+		var arot = false;
+		function set_rotation() {
+			var e = document.getElementById("rrot");
+			if (arot !== e.options[e.selectedIndex].value) {
+				arot = e.options[e.selectedIndex].value;
+				stl_viewer.set_auto_rotate(arot);
+			}
+		}
+		function set_rotation() {
+			var e = document.getElementById("rrot");
+			if (arot !== e.options[e.selectedIndex].value) {
+				arot = e.options[e.selectedIndex].value;
+				stl_viewer.set_auto_rotate(arot);
+			}
+		}
+	
+</center>�
+</script>
+</body>
+</html>

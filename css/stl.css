@@ -140,7 +140,17 @@ label{display:inline-block}
 .estimate_4 .Sbox_1 .tit{position:absolute; top:0; left:0; line-height:50px}
 
 .estimate_4 .Sbox_1 select{font-size:12px;width:148px; height:50px; border:1px solid #ddd; padding:0 10px;-webkit-appearance: none; -moz-appearance: none;
-								background: #fff url(../images/select_bg.jpg) no-repeat 125px center;}
+                                background: #fff url(../images/select_bg.jpg) no-repeat 125px center;}
+                                
+
+.estimate_4 .select_box_1{}
+.estimate_4 .Sbox_2{ position:absolute; top:55px; left:350px; padding:0 0 20px 80px; width:550px;}
+.estimate_4 .Sbox_2 .tit{position:absolute; top:0; left:0; line-height:50px}
+
+.estimate_4 .Sbox_2 select{font-size:12px;width:148px; height:50px; border:1px solid #ddd; padding:0 10px;-webkit-appearance: none; -moz-appearance: none;
+                                background: #fff url(../images/select_bg.jpg) no-repeat 125px center;}
+                                
+
 
 .estimate_4 .info_box{position:absolute; top:100px; left:350px; padding-bottom:30px; width:550px;}
 .estimate_4 #model_info{position:relative;}

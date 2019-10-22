@@ -31,12 +31,23 @@
 	function ecal()
 	{
 		var umat=document.getElementById("umat").value;
+		var umat_1=document.getElementById("umat_1").value;
 		var eff=0;
 		if(umat==0)
 		{
 			eff=0.0015;
 		}else{
 			eff=0.0011;
+		}
+
+		if(umat_1==0)
+		{
+			eff=0.0015;
+		}else if(umat_1==1){
+			eff=0.050;
+		}
+		else{
+			eff=0.0100;
 		}
 		var obj = stl_viewer.get_model_info(1);
 		var pr = obj.volume * eff;
@@ -117,6 +128,21 @@
 							<input type="file" onchange='stl_viewer.clean();stl_viewer.add_model({id:1,local_file:this.files[0]});' accept="*.stl" class="infile">
 					</div>
 				</div>
+
+				<div class="nav_1">
+					<div class="select_box_1">
+						<div id="mat_1" class="Sbox_2">
+							<div class="tit">
+								<label>프린팅 방식</label>
+							</div>
+							<select id="umat_1" name="usedMat_1" onchange="ecal();">
+								<option value="0">FDM</option>
+								<option value="1">DLP</option>
+								<option value="2">SLA</option>
+	
+							</select>
+						</div>
+					</div>
 
 
 

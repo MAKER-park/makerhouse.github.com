@@ -1,0 +1,172 @@
+@charset "utf-8";
+
+/* reset.css
+-----------------------------------------------------------------------------------------------------------------------------------*/
+@font-face{
+font-family:"NotoSansKR";
+src:url('../fonts/NotoSansKR-Regular.eot');
+src:url('../fonts/NotoSansKR-Regular.eot?#iefix') format('embedded-opentype'),
+url('../fonts/NotoSansKR-Regular.woff') format('woff'),
+url('../fonts/NotoSansKR-Regular.ttf') format('truetype');
+src:local(※), url('../fonts/NotoSansKR-Regular.woff') format('woff');
+}
+@font-face{
+font-family:"NotoSansKR_bold";
+src:url('../fonts/NotoSansKR-Medium.eot');
+src:url('../fonts/NotoSansKR-Medium.eot?#iefix') format('embedded-opentype'),
+url('../fonts/NotoSansKR-Medium.woff') format('woff'),
+url('../fonts/NotoSansKR-Medium.ttf') format('truetype');
+src:local(※), url('../fonts/NotoSansKR-Medium.woff') format('woff');
+}
+@font-face{
+font-family:"NotoSansKR_Light";
+src:url('../fonts/NotoSansKR-Light.eot');
+src:url('../fonts/NotoSansKR-Light.eot?#iefix') format('embedded-opentype'),
+url('../fonts/NotoSansKR-Light.woff') format('woff'),
+url('../fonts/NotoSansKR-Light.ttf') format('truetype');
+src:local(※), url('../fonts/NotoSansKR-Light.woff') format('woff');
+}
+@font-face{
+font-family:"NotoSansKR_Ebold";
+src:url('../fonts/NotoSansKR-Bold.eot');
+src:url('../fonts/NotoSansKR-Bold.eot?#iefix') format('embedded-opentype'),
+url('../fonts/NotoSansKR-Bold.woff') format('woff'),
+url('../fonts/NotoSansKR-Bold.ttf') format('truetype');
+src:local(※), url('../fonts/NotoSansKR-Bold.woff') format('woff');
+}
+
+html, body {padding:0;margin:0;height:100%; color:#555; word-break:break-all; letter-spacing:-0.02em; }
+body, td, select, textarea, input {font-size:12px; font-family:"NotoSansKR","NanumGothic",sans-serif}
+*:focus { outline:none; }​ 
+ ::-moz-selection{background:#0e559b;color:#fff;}
+ ::selection{background:#0e559b;color:#fff;}
+body, html {
+    height: 100%;
+    width: 100%;
+}
+body, button, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, input, li, ol, p, ul {
+    -moz-text-size-adjust: none;
+    margin: 0;
+    padding: 0;
+}
+input, textarea {
+    border-radius: 0;
+    resize: none;
+}
+body, button, h1, h2, h3, h4, input {
+    font-size: 12px;
+}
+body {
+    color: #666;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+caption, legend {
+    font-size: 0;
+    line-height: 0;
+    text-indent: -5000px;
+}
+fieldset, iframe, img {
+    border: 0 none;
+    vertical-align: top;
+}
+button {
+    margin: 0;
+    padding: 0;
+}
+fieldset {
+    font-size: 0;
+}
+ol, ul {
+    list-style: outside none none;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+address, em, i {
+    font-style: normal;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+th{font-weight:500}
+hr {
+    display: none;
+}
+.hide {
+    clear: both;
+    height: 0;
+    left: -9999px;
+    line-height: 0;
+    position: absolute;
+    top: -9999px;
+    width: 0;
+}
+a:focus, a:hover {
+    outline: 0 none;
+}
+label{display:inline-block}
+.NotoSansKR-Light{font-family:"NotoSansKR-Light";}
+.NotoSansKR{font-family:"NotoSansKR";}
+.NotoSansKR_bold{font-family:"NotoSansKR_bold";}
+.NotoSansKR_Ebold{font-family:"NotoSansKR_Ebold"}
+
+/* estimate_4 (STL)
+-----------------------------------------------------------------------------------------------------------------------------------*/
+.tp10{padding-top:10px}
+.estimate_4{font-family:"NotoSansKR";}
+
+.estimate_4 .content_box{position:absolute; top:0px; left:0px; float:left; background:#f8f8f8; padding:10px 20px; border:1px solid #ddd; height:350px; }
+.estimate_4 #stl_cont{ width:300px; height:300px; border:1px solid #ddd; background:#fff}
+.estimate_4 .content_box progress{background:#fff; border:1px solid #ddd; height:33px; width:300px}
+.infile{border:1px solid #ddd; color:#666; height:35px; width:350px; line-height:33px;  background:#fff; vertical-align:middle; box-sizing:border-box;}
+.infile:focus{border:1px solid #22b2e7; box-shadow:2px 2px 6px #eee inset;   }
+
+.estimate_4 .p-total {height:3em; width:80%;}
+/* .estimate_4 .nav{padding-top:30px;} */
+.estimate_4 .nav{float:left; padding:10px 10px; }
+
+.estimate_4 .tit{ position:absolute; font-size:15px; color:#333;}
+.estimate_4 .txt{ position:absolute; left:80px;}
+.estimate_4 .txt_2{ position:absolute; left:60px;}
+.estimate_4 .info{display:inline-block; position:relative; text-align:center;margin-right:19px;}
+.estimate_4 .info:last-child{margin:0;}
+.estimate_4 .txt label{ font-size:14px; font-weight:300; display:block;line-height:30px; color:#333;}
+
+.estimate_4 .select_box{}
+.estimate_4 .Sbox_1{ position:absolute; top:0px; left:350px; padding:0 0 20px 80px; width:550px;}
+.estimate_4 .Sbox_1 .tit{position:absolute; top:0; left:0; line-height:50px}
+
+.estimate_4 .Sbox_1 select{font-size:12px;width:148px; height:50px; border:1px solid #ddd; padding:0 10px;-webkit-appearance: none; -moz-appearance: none;
+								background: #fff url(../images/select_bg.jpg) no-repeat 125px center;}
+
+.estimate_4 .info_box{position:absolute; top:100px; left:350px; padding-bottom:30px; width:550px;}
+.estimate_4 #model_info{position:relative;}
+.estimate_4 .info_box .tit{padding-top:44px;}
+.estimate_4 .info_box .info input{width:140px; height:50px; border:1px solid #ddd; font-size:15px;}
+
+.estimate_4 .options_box{padding-top:20px; padding-bottom:30px; height:80px;}
+.estimate_4 #options{position:relative;}
+.estimate_4 .options_box .tit{padding-top:30px;}
+.estimate_4 .options_box .info{min-width:58px; vertical-align:middle;}
+.estimate_4 .options_box .info select{font-size:10px;width:110px; height:30px; border:1px solid #ddd; padding:0 10px;-webkit-appearance: none; -moz-appearance: none; background: #fff url(../images/select_bg.jpg) no-repeat 175px center;}
+.estimate_4 .options_box .color_box{padding:13px 0;}
+.estimate_4 .options_box .color_box button{width:24px;height:24px; border: 2px solid transparent; margin:0 2px;}
+.estimate_4 .options_box .rotate_box{padding:3px 0;}
+.estimate_4 .options_box .rotate_box button{width:40px;height:24px; border: 2px solid transparent; margin:0 2px; background:#909090; color:#fff;}
+
+.estimate_4 .options_box2{position:absolute; top:200px; left:350px; width:550px; padding-top:30px; padding-left:150px;}
+.estimate_4 .options_box2 .tit{padding-top:10px; align:center;}
+.estimate_4 .options_box2 label{display:inline-block;}
+.estimate_4 .options_box2 input{width:196px; height:50px; border:0px solid #ddd; font-size:17px; margin-right:10px;}
+.estimate_4 .options_box2 .info_txt{font-size:14px; line-height:24px; padding-top:20px;}
+.estimate_4 .options_box2 .info_txt .red{color:red; font-weight:500;}
+
+.estimate_4 .options_box3{position:absolute; top:250px; left:350px; padding-top:60px}
+.estimate_4 .options_box3 .tit{padding-top:10px;}
+.estimate_4 .options_box3 label{display:inline-block;}
+.estimate_4 .options_box3 input{width:196px; height:50px; border:0px solid #ddd; font-size:17px; margin-right:10px;}
+.estimate_4 .options_box3 .info_txt{font-size:14px; line-height:24px; padding-top:20px;}
+.estimate_4 .options_box3 .info_txt .red{color:red; font-weight:500;}

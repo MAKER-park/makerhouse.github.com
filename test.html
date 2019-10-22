@@ -41,14 +41,14 @@
 		var obj = stl_viewer.get_model_info(1);
 		var pr = obj.volume * eff;
 		if (pr <= 500) {
-			pr *= 500;
+			pr *= 700;
 		} else {
-			pr *= 500;
+			pr *= 600;
 		}
 		if (pr <= 5000) {
 		pr = 10000;
 		} else {  if (pr <= 20000)  pr=20000;}
-		pr = Math.ceil(pr/1000)*10000;
+		pr = Math.ceil(pr/1000)*1000;
 		document.getElementById("mprice").value = numberWithCommas(pr.toFixed(0));	
 	}
 
@@ -117,6 +117,19 @@
 							<input type="file" onchange='stl_viewer.clean();stl_viewer.add_model({id:1,local_file:this.files[0]});' accept="*.stl" class="infile">
 					</div>
 				</div>
+				<div class="nav">
+					<div class="select_box">
+						<div id="meth" class="Sbox_2">
+							<div class="tit">
+								<label>프린팅 방식</label>
+							</div>
+							<select id="umat" name="usedMat" onchange="ecal();">
+								<option value="0">DLP</option>
+	
+							</select>
+								<input type="file" onchange='stl_viewer.clean();stl_viewer.add_model({id:1,local_file:this.files[0]});' accept="*.stl" class="infile">
+						</div>
+					</div>
 
 
 
@@ -207,7 +220,7 @@
 			}
 		}
 	
-</center>�
+</center>�
 </script>
 </body>
 </html>

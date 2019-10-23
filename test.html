@@ -5,6 +5,7 @@
 <META charset="utf-8">
 <TITLE>makerhouse견적 페이지</TITLE>
 <link rel="stylesheet" href="css/stl.css">
+<link rel="stylesheet" href="css/cssProgress.css">
 </head>
 
 <script>
@@ -33,24 +34,28 @@
 		var umat=document.getElementById("umat").value;
 		var umat_1=document.getElementById("umat_1").value; //프린팅 방식 추가
 		var eff=0;
+		var eff_1=0;
 		if(umat==0)
 		{
 			eff=0.0015;
-		}else{
-			eff=0.0011;
+		}else if(umat==1){
+			eff=0.0010;
+		}
+		else{
+			eff= 0.020
 		}
 
 		if(umat_1==0)
 		{
-			eff=0.0015;
+			eff_1=1;
 		}else if(umat_1==1){
-			eff=0.050;
+			eff_1=1.5;
 		}
 		else{
-			eff=0.0100;
+			eff_1=2;
 		}
 		var obj = stl_viewer.get_model_info(1);
-		var pr = obj.volume * eff;
+		var pr = obj.volume * eff * eff_1;
 		if (pr <= 500) {
 			pr *= 700;
 		} else {
@@ -123,7 +128,8 @@
 						</div>
 						<select id="umat" name="usedMat" onchange="ecal();">
 							<option value="0">ABS-like white</option>
-
+							<option value="1">PLA</option>
+							<option value="2">RESIN</option>
 						</select>
 							<input type="file" onchange='stl_viewer.clean();stl_viewer.add_model({id:1,local_file:this.files[0]});' accept="*.stl" class="infile">
 					</div>
@@ -154,7 +160,7 @@
 						<div class="txt">
 							<div class="info">
 								<label>가로(mm)</label>
-								<input class="ibox" id="mwidth" readonly" style="text-align:center" />
+								<input class="ibox" id="mwidth" readonly style="text-align:center" />
 							</div>
 							<div class="info">
 								<label>세로(mm)</label>
